@@ -1,0 +1,44 @@
+﻿@model IEnumerable<ElBasset.DTO.DTO.ExamTypeDTO>
+
+@{
+    ViewData["Title"] = "AllExam";
+}
+
+<div style="padding-top:150px;text-align:right;" class="container">
+
+<h1>انواع الامتحانات </h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">انشاء امتحان جديد</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                الرقم التعريفي
+            </th>
+            <th>
+                نوع الامتحان
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExamTypeName)
+                </td>
+                <td>
+                    <a class="btn btn-success" asp-action="Edit" asp-route-Id="@item.Id">تعديل </a>
+                    <a class="btn btn-success" asp-action="Delete" asp-route-Id="@item.Id">حذف </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>

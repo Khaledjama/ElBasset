@@ -1,0 +1,46 @@
+﻿@model List<ElBasset.DTO.DTO.RoleVM>
+@{
+    int RoleNumber = 0;
+}
+<div style="padding-top:150px;text-align:right;" class="container">
+
+<div >
+    <h1>الادوار </h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">انشاء دور جديد</a>
+    <a asp-action="Index" asp-controller="Assitent" class="btn btn-primary">الادمن</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                الرقم التعريفي
+            </th>
+            <th>الاسم </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @RoleNumber
+                    @{
+                        RoleNumber++;
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoleName)
+                </td>
+                <td>
+                    <a class="btn btn-success" asp-action="Edit" asp-route-Id="@item.RoleId">تعديل </a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-Id="@item.RoleId">حذف </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
+</div>

@@ -1,0 +1,14 @@
+E:\Works 2022\ElBasset\ElBasset.DataBase\bin\Release\net6.0\ElBasset.DataBase.deps.json
+E:\Works 2022\ElBasset\ElBasset.DataBase\bin\Release\net6.0\ElBasset.DataBase.runtimeconfig.json
+E:\Works 2022\ElBasset\ElBasset.DataBase\bin\Release\net6.0\ElBasset.DataBase.dll
+E:\Works 2022\ElBasset\ElBasset.DataBase\bin\Release\net6.0\ElBasset.DataBase.pdb
+E:\Works 2022\ElBasset\ElBasset.DataBase\obj\Release\net6.0\ElBasset.DataBase.csproj.AssemblyReference.cache
+E:\Works 2022\ElBasset\ElBasset.DataBase\obj\Release\net6.0\ElBasset.DataBase.GeneratedMSBuildEditorConfig.editorconfig
+E:\Works 2022\ElBasset\ElBasset.DataBase\obj\Release\net6.0\ElBasset.DataBase.AssemblyInfoInputs.cache
+E:\Works 2022\ElBasset\ElBasset.DataBase\obj\Release\net6.0\ElBasset.DataBase.AssemblyInfo.cs
+E:\Works 2022\ElBasset\ElBasset.DataBase\obj\Release\net6.0\ElBasset.DataBase.csproj.CoreCompileInputs.cache
+E:\Works 2022\ElBasset\ElBasset.DataBase\obj\Release\net6.0\ElBasset.DataBase.dll
+E:\Works 2022\ElBasset\ElBasset.DataBase\obj\Release\net6.0\refint\ElBasset.DataBase.dll
+E:\Works 2022\ElBasset\ElBasset.DataBase\obj\Release\net6.0\ElBasset.DataBase.pdb
+E:\Works 2022\ElBasset\ElBasset.DataBase\obj\Release\net6.0\ElBasset.DataBase.genruntimeconfig.cache
+E:\Works 2022\ElBasset\ElBasset.DataBase\obj\Release\net6.0\ref\ElBasset.DataBase.dll

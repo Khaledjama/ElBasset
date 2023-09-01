@@ -1,0 +1,15 @@
+E:\Works 2022\ElBasset\ElBasset.Repo\bin\Debug\net6.0\ElBasset.Repo.deps.json
+E:\Works 2022\ElBasset\ElBasset.Repo\bin\Debug\net6.0\ElBasset.Repo.dll
+E:\Works 2022\ElBasset\ElBasset.Repo\bin\Debug\net6.0\ElBasset.Repo.pdb
+E:\Works 2022\ElBasset\ElBasset.Repo\bin\Debug\net6.0\ElBasset.DataBase.dll
+E:\Works 2022\ElBasset\ElBasset.Repo\bin\Debug\net6.0\ElBasset.DataBase.pdb
+E:\Works 2022\ElBasset\ElBasset.Repo\obj\Debug\net6.0\ElBasset.Repo.csproj.AssemblyReference.cache
+E:\Works 2022\ElBasset\ElBasset.Repo\obj\Debug\net6.0\ElBasset.Repo.GeneratedMSBuildEditorConfig.editorconfig
+E:\Works 2022\ElBasset\ElBasset.Repo\obj\Debug\net6.0\ElBasset.Repo.AssemblyInfoInputs.cache
+E:\Works 2022\ElBasset\ElBasset.Repo\obj\Debug\net6.0\ElBasset.Repo.AssemblyInfo.cs
+E:\Works 2022\ElBasset\ElBasset.Repo\obj\Debug\net6.0\ElBasset.Repo.csproj.CoreCompileInputs.cache
+E:\Works 2022\ElBasset\ElBasset.Repo\obj\Debug\net6.0\ElBasset.Repo.csproj.CopyComplete
+E:\Works 2022\ElBasset\ElBasset.Repo\obj\Debug\net6.0\ElBasset.Repo.dll
+E:\Works 2022\ElBasset\ElBasset.Repo\obj\Debug\net6.0\refint\ElBasset.Repo.dll
+E:\Works 2022\ElBasset\ElBasset.Repo\obj\Debug\net6.0\ElBasset.Repo.pdb
+E:\Works 2022\ElBasset\ElBasset.Repo\obj\Debug\net6.0\ref\ElBasset.Repo.dll

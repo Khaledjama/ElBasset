@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="rtl">
+
+<head>
+    <title>ElBasset</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="google-site-verification" content="3JQj8zhXDGawPruAJCeSxKdkzqlFJU9v9G40VKKYpi8" />
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="~/SecondTemplate/Academic-Master/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="~/SecondTemplate/Academic-Master/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/SecondTemplate/Academic-Master/css/jquery-ui.css">
+    <link rel="stylesheet" href="~/SecondTemplate/Academic-Master/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/SecondTemplate/Academic-Master/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/SecondTemplate/Academic-Master/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/SecondTemplate/Academic-Master/css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="~/SecondTemplate/Academic-Master/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="~/SecondTemplate/Academic-Master/fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="~/SecondTemplate/Academic-Master/css/aos.css">
+    <link href="~/SecondTemplate/Academic-Master/css/jquery.mb.YTPlayer.min.css" media="all" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="~/SecondTemplate/Academic-Master/css/style.css">
+</head>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+    <div class="site-wrap">
+
+        <div class="site-mobile-menu site-navbar-target">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close mt-3">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                </div>
+            </div>
+            <div class="site-mobile-menu-body"></div>
+        </div>
+
+
+        <div class="py-2 bg-light">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-3 text-right">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a asp-action="LogOut" asp-controller="Account" style="color: #51be78;text-align: center;text-decoration: none;" class="small mr-3"><span class="icon-unlock-alt"></span> تسجيل الخروج</a>
+                        }
+                        else{
+
+                            <a asp-action="Login" asp-controller="Account" style="color: #51be78;text-align: center;text-decoration: none;" class="small mr-3"><span class="icon-unlock-alt"></span> تسجيل الدخول</a>
+
+                            }
+                        </div>
+                    <div class="col-lg-9 d-none d-lg-block" style="text-align:left">
+                        <a href="https://m.facebook.com/pages/category/personal-blog/%D9%86%D8%A7%D8%AF%D8%B1-%D9%85%D8%AF%D9%83%D9%88%D8%B1-%D9%80%D9%80-%D8%A3%D8%B3%D8%AA%D8%A7%D8%B0-%D8%A7%D9%84%D9%84%D8%BA%D9%87-%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D8%A8%D8%A9-102562182463447/?_se_imp=0juLqKVbL1oacVpsh" style="color: #51be78;text-align: center;text-decoration: none;" class="small mr-3">مجموعتنا </a>
+                        <a href="https://www.facebook.com/groups/5439046316215606/" style="color: #51be78;text-align: center;text-decoration: none;" class="small mr-3">صفحتنا علي الفيس بوك </a>
+                        <a href="https://api.whatsapp.com/send?phone=201157462787" style="color: #51be78;text-align: center;text-decoration: none;" class="small mr-3"><span class="icon-phone2 mr-2"></span>01017413863</a>
+                        <a href="https://api.whatsapp.com/send?phone=201157462787" style="color: #51be78;text-align: center;text-decoration: none;" class="small mr-3"> للاستفسار عن المواعيد</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <header id="head" class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+
+            <div class="container">
+                <div class="d-flex align-items-center">
+                    <div class="site-logo">
+                        <a asp-action="Index" asp-controller="Home" class="d-block">
+                            <img src="~/SecondTemplate/Academic-Master/images/Logo.jpeg" style="height:55px" alt="Image" class="img-fluid">
+                        </a>
+                    </div>
+                    <div class="mr-auto">
+                        <nav class="site-navigation position-relative text-right" role="navigation">
+                            <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block" style="font-size: 20px;font-weight: 200;">
+                                <li class="active">
+                                    <a asp-action="Index" asp-controller="Home" class="nav-link text-left js-closhome" id="ho">الصفحة الرئيسية</a>
+                                </li>
+                                @if (User.IsInRole("الادمن"))
+                                {
+                                    <li class="has-children">
+                                        <a href="#" class="nav-link text-left js-closhome">الاقسام</a>
+                                        <ul class="dropdown">
+                                            <li><a asp-action="Index" asp-controller="Student" class="js-closhome">الطلاب</a></li>
+                                            <li><a asp-action="Index" asp-controller="Departments" class="js-closhome">الصفوفوف</a></li>
+                                            <li><a asp-action="Index" asp-controller="Roles" class="js-closhome">الادوار</a></li>
+                                            <li><a asp-action="AllExamType" asp-controller="ExamType" class="js-closhome">انواع الامتحانات</a></li>
+                                            <li><a asp-action="Index" asp-controller="Assitent" class="js-closhome">المساعدين </a></li>
+                                            <li><a asp-action="AllExam" asp-controller="Exams" class="js-closhome">الامتحانات </a></li>
+                                            <li><a asp-action="AllVideo" asp-controller="Video" class="js-closhome">الفيديوهات </a></li>
+                                            <li><a asp-action="AllLecture" asp-controller="Lecture" class="js-closhome">الدروس </a></li>
+
+                                        </ul>
+                                    </li>
+                                }
+                                <li>
+                                    <a asp-action="Index" asp-controller="AllLecture" class="nav-link text-left js-closhome" id="ho"> المحاضرات</a>
+                                    <a asp-action="Index" asp-controller="AllExams" class="nav-link text-left js-closhome" id="ho"> الامتحانات</a>
+                                    <a asp-action="Index" asp-controller="ListVideo" class="nav-link text-left js-closhome" id="ho"> الفيديوهات</a>
+                                </li>
+
+                            </ul>                                                                                                                                                                                                                                                                                          </ul>
+                        </nav>
+
+                    </div>
+                    <div class="ml-auto">
+                        <div class="social-wrap">
+                            <a href="https://m.facebook.com/pages/category/personal-blog/%D9%86%D8%A7%D8%AF%D8%B1-%D9%85%D8%AF%D9%83%D9%88%D8%B1-%D9%80%D9%80-%D8%A3%D8%B3%D8%AA%D8%A7%D8%B0-%D8%A7%D9%84%D9%84%D8%BA%D9%87-%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D8%A8%D8%A9-102562182463447/?_se_imp=0juLqKVbL1oacVpsh"><span class="icon-facebook"></span></a>
+                            <a href="https://www.facebook.com/groups/5439046316215606/"><span class="icon-facebook"></span></a>
+                            <a href="https://api.whatsapp.com/send?phone=201157462787"><span class="icon-phone mr-2"></span></a>
+                            <a  asp-action="Privacy" asp-controller="Home" ><span class="icon-person"></span></a>
+                            <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black">
+                                <span class="icon-menu h3"></span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </header>
+        <div>
+            @RenderBody()
+        </div>
+
+    </div>
+    <!-- .site-wrap -->
+    <!-- loader -->
+    <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#51be78" /></svg></div>
+    <div class="footer" style="position: relative;background-color: #183661;text-align: center; bottom: 0; line-height: 3;">
+        <div class="copyright">
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This website is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://www.facebook.com/profile.php?id=100038966588040" target="_blank">Khaled Gamal</a>
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+        </div>
+    </div>
+
+    <script src="~/SecondTemplate/Academic-Master/js/jquery-3.3.1.min.js"></script>
+    <script src="~/SecondTemplate/Academic-Master/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="~/SecondTemplate/Academic-Master/js/jquery-ui.js"></script>
+    <script src="~/SecondTemplate/Academic-Master/js/popper.min.js"></script>
+    <script src="~/SecondTemplate/Academic-Master/js/bootstrap.min.js"></script>
+    <script src="~/SecondTemplate/Academic-Master/js/owl.carousel.min.js"></script>
+    <script src="~/SecondTemplate/Academic-Master/js/jquery.stellar.min.js"></script>
+    <script src="~/SecondTemplate/Academic-Master/js/jquery.countdown.min.js"></script>
+    <script src="~/SecondTemplate/Academic-Master/js/bootstrap-datepicker.min.js"></script>
+    <script src="~/SecondTemplate/Academic-Master/js/jquery.easing.1.3.js"></script>
+    <script src="~/SecondTemplate/Academic-Master/js/aos.js"></script>
+    <script src="~/SecondTemplate/Academic-Master/js/jquery.fancybox.min.js"></script>
+    <script src="~/SecondTemplate/Academic-Master/js/jquery.sticky.js"></script>
+    <script src="~/SecondTemplate/Academic-Master/js/jquery.mb.YTPlayer.min.js"></script>
+    <script src="~/SecondTemplate/Academic-Master/js/main.js"></script>
+</body>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
+
+</html>
+

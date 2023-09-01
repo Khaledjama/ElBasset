@@ -1,0 +1,28 @@
+{
+  "profiles": {
+    "ElBasset": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Devlopment"
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "https://localhost:7217;http://localhost:5059"
+    },
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  },
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:13032",
+      "sslPort": 44355
+    }
+  }
+}

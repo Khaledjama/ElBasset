@@ -1,0 +1,27 @@
+﻿@model ElBasset.DataBase.ExamType
+
+@{
+    ViewData["Title"] = "Delete";
+}
+<div style="padding-top:150px;text-align:right;" class="container">
+
+<h1>حذف </h1>
+
+<h3>هل انت متاكد انك تريد حذف نوع الامتحان </h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            نوع الامتحان
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ExamTypeName)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete" method="post">
+        <input type="submit" value="حذف" class="btn btn-danger" /> 
+            <a asp-action="AllExamType" class="btn btn-primary">العودة</a>
+    </form>
+</div>
+</div>

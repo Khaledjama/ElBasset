@@ -1,0 +1,110 @@
+﻿@model List<ElBasset.DataBase.Lecture>
+@{
+    int RoleNumber = 0;
+}
+<link href="~/fontawosem/css/fontawesome.min.css" rel="stylesheet" />
+<link href="~/fontawosem/css/all.css" rel="stylesheet" />
+<link href="~/fontawosem/css/all.min.css" rel="stylesheet" />
+<div class="container" style="padding-top:150px;text-align:right">
+<h1>المحاضرات </h1>
+<div class="d-flex justify-content-start">
+    <div style="width:50%" class="m-1">
+        <form  method="post" asp-action="Filter">
+            <h3>البحث عن طريق القسم</h3>
+            <div class="d-flex justify-content-start">
+                <div class="form-group p-1" style="width:50%">
+                    <select name="DepartmentId" class="form-control"
+                            asp-items="@(new SelectList(@ViewBag.AllDepartment,"Id","Name"))"></select>
+                </div>
+                <div class="form-group p-1">
+                    <input type="submit" value="بحث"  class="btn btn-primary" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+<div>
+
+</div>
+<div style="text-align:right" class="container">
+    <p>
+        <a asp-action="Create" class="btn btn-primary">انشاء محاضرة جديد</a>
+    </p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>الرقم التعريفي</th>
+                <th>اسم المحاضرة </th>
+                <th>اسم القسم </th>
+                <th> </th>
+                <th>تاريخ الرفع </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @RoleNumber
+                        @{
+                            RoleNumber++;
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Department.Name)
+                    </td>
+                    <td>
+                        <a asp-action="DownloadPdf" asp-route-Id="@item.Id" style="padding:25px;color:black;"> <i class="fa-solid fa-download"></i></a>
+
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => item.dateTime)</td>
+                    <td>
+                        <a class="btn btn-success" asp-action="Update" asp-route-Id="@item.Id">تعديل </a>
+                        <a class="btn btn-danger" onclick="DeleteLecture(@item.Id)">حذف </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<script src="~/fontawosem/js/all.js"></script>
+<script src="~/fontawosem/js/all.min.js"></script>
+<script type="text/javascript">
+
+
+    function DeleteLecture(id){
+        if(id==''){
+            alert("حدث خطأ")
+        }else{
+            var formData = new FormData();
+            formData.append("id", id);
+            $.ajax({
+                url: '/api/LectureApi/DeleteLecture',
+                type: 'POST',
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (fileName) {
+                    $("#fileProgress").hide();
+                    $("#lblMessage").html("<b>" + fileName + "</b> has been uploaded.");
+                    alert("تم حذف المحاضرة بنجاح")
+                    location.reload();
+                },
+                error: function (jqXhr, textStatus, errorMessage) { // error callback
+                    alert("هناك خطأ اثناء حذف المحاضرة");
+                    location.reload();
+                },
+            });
+        }
+        
+    }
+
+</script>

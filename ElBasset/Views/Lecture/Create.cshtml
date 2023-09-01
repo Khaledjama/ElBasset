@@ -1,0 +1,95 @@
+﻿<div style="padding-top:150px;text-align:right;" class="container">
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group p-1">
+            <label class="control-label"> اسم المحاضرة</label>
+            <input type="text" id="lName" required class="form-control" />
+        </div>
+        <div class="form-group p-1">
+            <label class="control-label"> المحاضرة</label>
+            <input type="file" id="pdf" required class="form-control" />
+        </div>
+        <div class="form-group p-1">
+            <label class="control-label"> القسم</label>
+            <select id="depId" class="form-control" required 
+                    asp-items="@(new SelectList(@ViewBag.AllDepartment,"Id","Name"))"></select>
+        </div>
+        <div class="form-group">
+            <input type="submit" id="btnUpload" value="حفظ" class="btn btn-primary" />
+            <a asp-action="AllLecture" class="btn btn-primary">العودة</a>
+        </div>
+        <div class="form-group">
+                
+                <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div id="p5" class="progress-bar progress-bar-striped progress-bar-animated" style="width: 0%"> 0%</div>
+                </div>
+        </div>
+    </div>
+   
+
+</div>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript">
+    var myFile = "";
+
+    $('#pdf').on('change', function () {
+
+        myFile = $("#pdf").val();
+        var upld = myFile.split('.').pop();
+        if (upld !== 'pdf') {
+            alert("من فضلك ارفع المحاضر ب امتداد pdf")
+            $("#pdf").val('');
+        }
+    })
+    $("body").on("click", "#btnUpload", function () {
+        if($("#pdf").val().length===0 || $("#depId").val()=='' || $("#lName").val().length==''){
+            alert("من فضلك املأ البيانات كلها بشكل صحيح")
+            location.reload();
+        }else{
+            var formData = new FormData();
+            formData.append("lName", $("#lName").val());
+            formData.append("depId", $("#depId").val());
+            formData.append("pdf", $("#pdf")[0].files[0]);
+            $.ajax({
+                url: '/api/LectureApi/UploadLecture',
+                type: 'POST',
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (fileName) {
+                    $("#fileProgress").hide();
+                    $("#lblMessage").html("<b>" + fileName + "</b> has been uploaded.");
+                    alert("تم اضافة المحاضرة بنجاح")
+                    location.reload();
+                },
+                error: function (jqXhr, textStatus, errorMessage) { // error callback
+                    alert("هناك خطأ حدث اثناء رفع المحاضرة");
+                    location.reload();
+                },
+                xhr: function () {
+                    var fileXhr = $.ajaxSettings.xhr();
+                    if (fileXhr.upload) {
+                        $("progress").show();
+                        fileXhr.upload.addEventListener("progress", function (e) {
+                            if (e.lengthComputable) {
+                                var progressvalu = Math.round((e.loaded / e.total) * 100);
+                                document.getElementById('p5').style.width = progressvalu + "%";
+                                document.getElementById('p5').innerHTML = progressvalu + "%";
+                                $("#fileProgress").attr({
+                                    value: e.loaded,
+                                    max: e.total
+                                });
+                            }
+                        }, false);
+                    }
+                    return fileXhr;
+                }
+            });
+        }
+    });
+</script>
+
+

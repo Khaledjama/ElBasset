@@ -1,0 +1,42 @@
+﻿@model List<ElBasset.DTO.DTO.LectureDTO>
+@{
+    int RowNumber = 1;
+}
+<div style="padding-top:150px;text-align:right;" class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    الرقم التعريفي
+                </th>
+                <th>
+                    اسم المحاضرة
+                </th>
+                <th>
+                    تاريخ الرفع
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @RowNumber
+                        @{RowNumber++;}
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.dateTime)
+                    </td>
+                    <td>
+                        <a class="btn btn-primary" asp-action="DownloadLecture" asp-route-Id="@item.Id">تنزيل المحاضرة </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

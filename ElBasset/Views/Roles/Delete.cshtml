@@ -1,0 +1,29 @@
+﻿@model ElBasset.DTO.DTO.RoleVM
+
+@{
+    ViewData["Title"] = "Delete";
+}
+<div style="padding-top:150px;text-align:right;" class="container">
+
+<h2>حذف الدور</h2>
+
+<h3>هل تريد حذف ذالك الدور ؟</h3>
+<div class="container p-3 my-3 border">
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            اسم الدور
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.RoleName)
+        </dd>
+    </dl>
+
+    <form asp-action="DeleteConfirmation" method="post">
+        <input type="hidden" asp-for="RoleId" />
+        <input class="btn btn-primary" type="submit" value="نعم" />
+        <a class="btn btn-danger" asp-action="Index">لا</a>
+    </form>
+
+</div>
+</div>

@@ -1,0 +1,29 @@
+﻿@model ElBasset.DTO.DTO.DepartmentDTO
+
+@{
+    ViewData["Title"] = "Delete";
+}
+<div style="padding-top:150px;text-align:right;" class="container">
+
+<h2>حذف القسم</h2>
+
+<h3>هل تريد حذف ذالك القسم ؟</h3>
+<div class="container p-3 my-3 border">
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            اسم القسم
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+
+    <form asp-action="DeleteConfirmation" method="post">
+        <input type="hidden" asp-for="Id" />
+        <input class="btn btn-primary" type="submit" value="نعم" />
+        <a class="btn btn-danger" asp-action="Index">لا</a>
+    </form>
+
+</div>
+</div>

@@ -1,0 +1,65 @@
+﻿@model ElBasset.DTO.DTO.RegisterDTO
+
+@{
+    ViewData["Title"] = "Create";
+}
+<div style="padding-top:150px;text-align:right;" class="container">
+
+<h1>أنشاء</h1>
+
+<h4>مستخدم جديد</h4>
+<hr />
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @ViewBag.Message
+    </div>
+}
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Register" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group p-1">
+                <label class="control-label"> اسم المستخدم</label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group p-1">
+                <label class="control-label"> الايميل</label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group p-1">
+                <label class="control-label"> كلمة السر</label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group p-1">
+                <label class="control-label"> تاكيد كلمة السر</label>
+                <input asp-for="ConfirmPassword" class="form-control" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group p-1">
+                <label class="control-label"> القسم</label>
+                <select asp-for="DepartmentId" class="form-control"
+                        asp-items="@(new SelectList(@ViewBag.AllDepartment,"Id","Name"))"></select>
+            </div>
+            <div class="form-group p-1">
+                <label class="control-label"> الدور</label>
+                <select asp-for="RoleId" class="form-control"
+                        asp-items="@(new SelectList(@ViewBag.AllRole,"Id","Name"))"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="أنشاء" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-primary">العودة</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

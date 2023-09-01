@@ -1,0 +1,64 @@
+﻿@model ElBasset.DTO.DTO.LoginDTO
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/secondtemplate/logintemplate/css/style.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <meta name="google-site-verification" content="3JQj8zhXDGawPruAJCeSxKdkzqlFJU9v9G40VKKYpi8" />
+    <title> Account </title>
+</head>
+<body>
+    <img class="wave" src="~/secondtemplate/logintemplate/img/wave.png">
+    <div class="container">
+        <div class="img">
+            <img src="~/secondtemplate/logintemplate/img/bg.svg">
+        </div>
+        <div class="login-content">
+            <form method="post" asp-action="Login">
+
+                <img src="~/secondtemplate/logintemplate/img/avatar.svg">
+                <h2 class="title">تسجيل الدخول</h2>
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+                @if (ViewBag.Message != null)
+                {
+                    <p class="text-danger">@ViewBag.Message</p>
+                }
+                <div class="input-div one">
+                    <div class="i">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="div">
+                        <h5>الايميل</h5>
+                        <input asp-for="Email"  type="text" class="input">
+                        <span asp-validation-for="Email" class="test-danger"></span>
+                    </div>
+                </div>
+                <div class="input-div pass">
+                    <div class="i">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="div">
+                        <h5>كلمة المرور</h5>
+                        <input asp-for="Password" type="password" class="input">
+                    </div>
+                </div>
+                <input type="submit" class="btn" value="تسجيل الدخول">
+            </form>
+        </div>
+    </div>
+
+
+    <script type="text/javascript" src="~/secondtemplate/logintemplate/js/main.js"></script>
+
+</body>
+</html>

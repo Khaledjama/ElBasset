@@ -1,0 +1,66 @@
+﻿@model ElBasset.DTO.DTO.ExamDTO
+
+@{
+    ViewData["Title"] = "Create";
+}
+<div style="padding-top:150px;text-align:right;" class="container">
+
+    <h1>تعديل</h1>
+
+    <h4>امتحان </h4>
+    <hr />
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @ViewBag.Message
+        </div>
+    }
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input hidden type="text" asp-for="@Model.Id" value="@Model.Id" />
+                <div class="form-group p-1">
+                    <label class="control-label"> اسم الامتحان</label>
+                    <input asp-for="ExamName" class="form-control" />
+                    <span asp-validation-for="ExamName" class="text-danger"></span>
+                </div>
+                <div class="form-group p-1">
+                    <label class="control-label"> اللينك</label>
+                    <input asp-for="ExamLink" class="form-control" />
+                    <span asp-validation-for="ExamLink" class="text-danger"></span>
+                </div>
+                <div class="form-group p-1">
+                    <label class="control-label"> بداية الامتحان</label>
+                    <input asp-for="StartDateTimeExam" class="form-control" />
+                    <span asp-validation-for="StartDateTimeExam" class="text-danger"></span>
+                </div>
+                <div class="form-group p-1">
+                    <label class="control-label"> نهاية الامتحان</label>
+                    <input asp-for="EndDateTimeExam" class="form-control" />
+                    <span asp-validation-for="EndDateTimeExam" class="text-danger"></span>
+                </div>
+                <div class="form-group p-1">
+                    <label class="control-label"> القسم</label>
+                    <select asp-for="DepartmentId" class="form-control"
+                            asp-items="@(new SelectList(@ViewBag.AllDepartment,"Id","Name"))"></select>
+                </div>
+                <div class="form-group p-1">
+                    <label class="control-label"> نوع الامتحان</label>
+                    <select asp-for="ExamTypeId" class="form-control"
+                            asp-items="@(new SelectList(@ViewBag.AllExamType,"Id","ExamTypeName"))"></select>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="حفظ" class="btn btn-primary" />
+                    <a asp-action="AllExam" class="btn btn-primary">العودة</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

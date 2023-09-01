@@ -1,0 +1,50 @@
+﻿@model List<ElBasset.DataBase.ApplicationUser>
+@{
+    int RoleNumber = 0;
+}
+<div style="padding-top:150px;text-align:right;" class="container">
+
+    <h1>المستخدمين </h1>
+    <p>
+        <a asp-action="Register" class="btn btn-primary">انشاء مستخدم جديد</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    الرقم التعريفي
+                </th>
+                <th>اسم المستخدم </th>
+                <th>الايميل </th>
+                <th>العنوان </th>
+                <th>رقم التليفون </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @RoleNumber
+                        @{
+                            RoleNumber++;
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                        @Html.DisplayFor(modelItem => item.MiddleName)
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Adress)</td>
+                    <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
+=                    <td>
+                        <a class="btn btn-success" asp-action="ResetPassword" asp-route-Id="@item.Id">إعادة تعيين كلمة السر </a>
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-Id="@item.Id">حذف </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

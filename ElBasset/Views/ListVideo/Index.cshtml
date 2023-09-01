@@ -1,0 +1,22 @@
+﻿@model List<ElBasset.DTO.DTO.VideosDTO>
+<div class="container" style="padding-top:150px;text-align:right;">
+    <h3>كل الفيديوهات</h3>
+    <div class="row">
+        @foreach (var Video in Model)
+        {
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="course-1-item">
+                    <figure class="thumnail">
+                        <a href="course-single.html"><img src="~/Files/Images/@Video.ImageVideoPath" alt="Image" class="img-fluid" style="height:300px;width:100%"></a>
+                        <div class="category" style="background-color:#51be78"><h3>اسم المحاضرة @Video.Name</h3></div>
+                    </figure>
+                    <div class="course-1-content pb-4">
+                        <h2>وصف المحاضرة @Video.VideoDecription</h2>
+                        <a asp-action="Filter" asp-controller="ListVideo" asp-route-Id="@Video.Id" class="btn btn-primary rounded-0 px-4">تشغيل</a>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>

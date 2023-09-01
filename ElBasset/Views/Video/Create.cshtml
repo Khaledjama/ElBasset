@@ -1,0 +1,113 @@
+﻿<div style="padding-top:150px;text-align:right;" class="container">
+
+<div class="">
+    <div class="col-md-4">
+        <div class="form-group">
+            <label class="control-label"> اسم الفيديو</label>
+            <input type="text" id="lName" required class="form-control" />
+        </div>
+        <div class="form-group">
+            <label class="control-label"> وصف الفيديو</label>
+            <input type="text" id="Vdescription" required class="form-control" />
+        </div>
+        <div class="form-group ">
+            <label class="control-label"> الفيديو</label>
+            <input type="file" id="video" accept="video/*" required class="form-control" />
+        </div>
+        <div class="form-group ">
+            <label class="control-label"> الصورة</label>
+                <input type="file" id="image" accept="image/*" required class="form-control" />
+        </div>
+        <div class="form-group">
+            <label class="control-label"> القسم</label>
+            <select id="depId" class="form-control" required
+                    asp-items="@(new SelectList(@ViewBag.AllDepartment,"Id","Name"))"></select>
+        </div>
+        <div class="form-group">
+            <input type="submit" id="btnUpload" value="حفظ" class="btn btn-primary" />
+            <a asp-action="AllVideo" class="btn btn-primary">العودة</a>
+        </div>
+    </div>
+    <hr />
+    <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+        <div id="p5" class="progress-bar progress-bar-striped progress-bar-animated" style="width: 0%"> 5%</div>
+    </div>
+
+</div>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript">
+    var myFile = "";
+
+    $('#video').on('change', function () {
+
+        myFile = $("#video").val();
+        console.log(myFile);
+        var upld = myFile.split('.').pop();
+        if (upld !== 'mp4') {
+            alert("من فضلك ارفع المحاضر ب امتداد mp4")
+            $("#video").val('');
+        }
+    })
+    $('#image').on('change', function () {
+
+        var f = $("#image").val();
+        var upld = f.split('.').pop().toLowerCase();
+        if (upld === 'png' || upld === 'jpeg' || upld === 'jpg' || upld === 'jfif' || upld === 'pjpeg' || upld === 'pjpeg' || upld === 'pjp') 
+        {
+        }else{
+            alert("من فضلك اختر صور فقط")
+            $("#image").val('');
+        }
+    });
+    $("body").on("click", "#btnUpload", function () {
+        if ($("#video").val().length === 0 || $("#depId").val() == '' || $("#Vdescription").val().length=='' || $("#lName").val().length == '' || $("#image").val().length === 0) {
+            alert("بيانات غير صحيحه")
+            location.reload();
+        } else {
+            var formData = new FormData();
+            formData.append("lName", $("#lName").val());
+            formData.append("depId", $("#depId").val());
+            formData.append("Vdescription", $("#Vdescription").val());
+            formData.append("video", $("#video")[0].files[0]);
+            formData.append("image", $("#image")[0].files[0]);
+            $.ajax({
+                url: '/api/VideoApi/UploadVideo',
+                type: 'POST',
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (fileName) {
+                    $("#fileProgress").hide();
+                    alert("تم اضافة  الفيديو")
+                    location.reload();
+                },
+                error: function (jqXhr, textStatus, errorMessage) { // error callback
+                    alert("هناك خطأ حدث اثناء رفع الفيديو");
+                    location.reload();
+                },
+                xhr: function () {
+                    var fileXhr = $.ajaxSettings.xhr();
+                    if (fileXhr.upload) {
+                        $("progress").show();
+                        fileXhr.upload.addEventListener("progress", function (e) {
+                            if (e.lengthComputable) {
+                                var progressvalu = Math.round((e.loaded / e.total) * 100);
+                                document.getElementById('p5').style.width = progressvalu + "%";
+                                document.getElementById('p5').innerHTML = progressvalu + "%";
+                                $("#fileProgress").attr({
+                                    value: e.loaded,
+                                    max: e.total
+                                });
+                            }
+                        }, false);
+                    }
+                    return fileXhr;
+                }
+            });
+        }
+    });
+</script>
+
+

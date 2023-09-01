@@ -1,0 +1,49 @@
+﻿@model List<ElBasset.DTO.DTO.ExamDTO>
+@{
+    int RoleNumber = 0;
+}
+<div class="container" style="padding-top:150px;text-align:right">
+</div>
+<div>
+</div>
+<div class="container" style="text-align:right">
+    <div class="table-responsive" style="font-size:13px;">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        الرقم التعريفي
+                    </th>
+                    <th>اسم الامتحان </th>
+                    <th>نوع الامتحان </th>
+                    <th>اللينك </th>
+                    <th>بداية الامتحان </th>
+                    <th>نهاية الامتحان  </th>
+                    <th>القسم </th>
+                    <th>الحالة</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @RoleNumber
+                            @{
+                                RoleNumber++;
+                            }
+                        </td>
+                        <td> @Html.DisplayFor(modelItem => item.ExamName)</td>
+                        <td> @Html.DisplayFor(modelItem => item.ExamType.ExamTypeName)</td>
+                        <td> <a target="_blank" href="@item.ExamLink" class="btn btn-primary">Open Exam</a> </td>
+                        <td>@Html.DisplayFor(modelItem => item.StartDateTimeExam)</td>
+                        <td>@Html.DisplayFor(modelItem => item.EndDateTimeExam)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Department.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Statues)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>

@@ -1,0 +1,29 @@
+﻿@model ElBasset.DTO.DTO.RoleVM
+
+@{
+    ViewData["Title"] = "Create";
+}
+<div style="padding-top:150px;text-align:right;" class="container">
+
+<h1>أنشاء</h1>
+<h4>دور جديد</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group p-1">
+                <label class="control-label"> اسم الدور</label>
+                <input asp-for="RoleName" class="form-control" required />
+                <span asp-validation-for="RoleName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="أنشاء" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-primary">العودة</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+</div>
